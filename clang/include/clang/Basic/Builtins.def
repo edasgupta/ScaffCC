@@ -89,8 +89,11 @@
 // q for 'q'bit
 // l for c'l'assical bit
 BUILTIN(CNOT , "vqq"  , "")
+BUILTIN(CZ , "vqq"  , "")
 BUILTIN(X , "vq"  , "")
 BUILTIN(Y , "vq"  , "")
+BUILTIN(SqrtX , "vq"  , "")
+BUILTIN(SqrtY , "vq"  , "")
 BUILTIN(Z , "vq"  , "")
 BUILTIN(H , "vq"  , "")
 BUILTIN(T , "vq"  , "")
