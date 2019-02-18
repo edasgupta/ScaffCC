@@ -116,6 +116,9 @@ LOCAL_MOVES_SCHED("local_moves_sched", cl::init(0), cl::Hidden,
 #define _Toffoli 16
 #define _Fredkin 17
 #define _All 18
+#define _CZ 19
+#define _SqrtX 20
+#define _SqrtY 21
 
 namespace {
 
@@ -320,7 +323,10 @@ namespace {
       gate_name[_Rx] = "Rx";
       gate_name[_Ry] = "Ry";
       gate_name[_Rz] = "Rz";
-      gate_name[_All] = "All";                    
+      gate_name[_All] = "All";
+      gate_name[_CZ] = "CZ";
+      gate_name[_SqrtX] = "SqrtX";
+      gate_name[_SqrtY] = "SqrtY";
 
       gate_index["CNOT"] = _CNOT;        
       gate_index["H"] = _H;
@@ -340,7 +346,10 @@ namespace {
       gate_index["Rx"] = _Rx;
       gate_index["Ry"] = _Ry;
       gate_index["Rz"] = _Rz;
-      gate_index["All"] = _All;                    
+      gate_index["All"] = _All;
+      gate_index["CZ"] = _CZ;
+      gate_index["SqrtX"] = _SqrtX;
+      gate_index["SqrtY"] = _SqrtY;
     }
 
 
@@ -1862,7 +1871,10 @@ void GenLPFSSched::find_lp(Function* F, int pathNum){
             || (CF->getIntrinsicID() == Intrinsic::Toffoli)
             || (CF->getIntrinsicID() == Intrinsic::X)
             || (CF->getIntrinsicID() == Intrinsic::Y)
-            || (CF->getIntrinsicID() == Intrinsic::Z)){
+            || (CF->getIntrinsicID() == Intrinsic::Z)
+            || (CF->getIntrinsicID() == Intrinsic::CZ)
+            || (CF->getIntrinsicID() == Intrinsic::SqrtX)
+            || (CF->getIntrinsicID() == Intrinsic::SqrtY)){
           return true;
         }
       }
