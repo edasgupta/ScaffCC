@@ -1427,6 +1427,18 @@ RValue CodeGenFunction::EmitBuiltinExpr(const FunctionDecl *FD,
 
     return RValue::get(Builder.CreateCall2(F, ControlQbit, TargetQbit));
   }
+  case Builtin::BICZ: {
+    Value *ControlQbit = EmitScalarExpr(E->getArg(0));
+    Value *TargetQbit = EmitScalarExpr(E->getArg(1));
+
+    std::vector<llvm::Type*> TyVector;
+    TyVector.push_back(ControlQbit -> getType());
+    TyVector.push_back(TargetQbit -> getType());
+    llvm::ArrayRef<llvm::Type*> Tys = llvm::makeArrayRef(TyVector);
+    Value *F = CGM.getIntrinsic(Intrinsic::CZ, Tys);
+
+    return RValue::get(Builder.CreateCall2(F, ControlQbit, TargetQbit));
+  }
   case Builtin::BIX: {
     Value *TargetQbit = EmitScalarExpr(E->getArg(0));
     Value *F = CGM.getIntrinsic(Intrinsic::X,
@@ -1442,6 +1454,18 @@ RValue CodeGenFunction::EmitBuiltinExpr(const FunctionDecl *FD,
   case Builtin::BIZ: {
     Value *TargetQbit = EmitScalarExpr(E->getArg(0));
     Value *F = CGM.getIntrinsic(Intrinsic::Z, 
+        llvm::makeArrayRef(TargetQbit -> getType()));
+    return RValue::get(Builder.CreateCall(F, TargetQbit));
+  }
+  case Builtin::BISqrtX: {
+    Value *TargetQbit = EmitScalarExpr(E->getArg(0));
+    Value *F = CGM.getIntrinsic(Intrinsic::SqrtX,
+        llvm::makeArrayRef(TargetQbit -> getType()));
+    return RValue::get(Builder.CreateCall(F, TargetQbit));
+  }
+  case Builtin::BISqrtY: {
+    Value *TargetQbit = EmitScalarExpr(E->getArg(0));
+    Value *F = CGM.getIntrinsic(Intrinsic::SqrtY,
         llvm::makeArrayRef(TargetQbit -> getType()));
     return RValue::get(Builder.CreateCall(F, TargetQbit));
   }
