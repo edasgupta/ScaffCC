@@ -77,6 +77,9 @@ MOVE_WEIGHT("move-weight-cg", cl::init(4), cl::Hidden,
 #define _Toffoli 16
 #define _Fredkin 17
 #define _All 18
+#define _CZ 19
+#define _SqrtX 20
+#define _SqrtY 21
 
 bool debugGenSIMDSchedCG = false;
 
@@ -208,7 +211,10 @@ namespace {
       gate_name[_Rx] = "Rx";
       gate_name[_Ry] = "Ry";
       gate_name[_Rz] = "Rz";
-      gate_name[_All] = "All";                    
+      gate_name[_All] = "All";
+      gate_name[_CZ] = "CZ";
+      gate_name[_SqrtX] = "SqrtX";
+      gate_name[_SqrtY] = "SqrtY";
 
       gate_index["CNOT"] = _CNOT;        
       gate_index["H"] = _H;
@@ -228,7 +234,10 @@ namespace {
       gate_index["Rx"] = _Rx;
       gate_index["Ry"] = _Ry;
       gate_index["Rz"] = _Rz;
-      gate_index["All"] = _All;                    
+      gate_index["All"] = _All;
+      gate_index["CZ"] = _CZ;
+      gate_index["SqrtX"] = _SqrtX;
+      gate_index["SqrtY"] = _SqrtY; 
     }
 
 
@@ -724,6 +733,9 @@ uint64_t GenSIMDSchedCG::get_ts_to_schedule_leaf(Function* F, uint64_t ts, Funct
   else if(intrinsic_overloaded_name.find("Tdag.") != string::npos) intrinsic_overloaded_name = "Tdag";
   else if(intrinsic_overloaded_name.find("X.") != string::npos) intrinsic_overloaded_name = "X";
   else if(intrinsic_overloaded_name.find("Z.") != string::npos) intrinsic_overloaded_name = "Z";
+  else if(intrinsic_overloaded_name.find("CZ") != string::npos) intrinsic_overloaded_name = "CZ";
+  else if(intrinsic_overloaded_name.find("SqrtX") != string::npos) intrinsic_overloaded_name = "SqrtX";
+  else if(intrinsic_overloaded_name.find("SqrtY") != string::npos) intrinsic_overloaded_name = "SqrtY";
 
   //  map<string, int>::iterator gidx = gate_index.find(funcToSched->getName().str().substr(5));
   map<string, int>::iterator gidx = gate_index.find(intrinsic_overloaded_name);
@@ -1188,7 +1200,10 @@ bool GenSIMDSchedCG::checkIfIntrinsic(Function* CF){
         || (CF->getIntrinsicID() == Intrinsic::Toffoli)
         || (CF->getIntrinsicID() == Intrinsic::X)
         || (CF->getIntrinsicID() == Intrinsic::Y)
-        || (CF->getIntrinsicID() == Intrinsic::Z)){
+        || (CF->getIntrinsicID() == Intrinsic::Z)
+        || (CF->getIntrinsicID() == Intrinsic::CZ)
+        || (CF->getIntrinsicID() == Intrinsic::SqrtX)
+        || (CF->getIntrinsicID() == Intrinsic::SqrtY)){
       return true;
     }
   }
