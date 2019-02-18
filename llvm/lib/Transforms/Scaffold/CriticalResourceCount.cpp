@@ -54,6 +54,9 @@ using namespace std;
 #define _Toffoli 16
 #define _Fredkin 17
 #define _All 18
+#define _CZ 19
+#define _SqrtX 20
+#define _SqrtY 21
 
 
 bool debugCritDataPath = false;
