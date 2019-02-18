@@ -44,6 +44,12 @@ using namespace std;
 #define _Rx 14
 #define _Ry 15
 #define _Rz 16
+#define _Rx 14
+#define _Ry 15
+#define _Rz 16
+#define _CZ 19
+#define _SqrtX 20
+#define _SqrtY 21
 
 bool debugRTFreqEstHyb = false;
 
@@ -113,6 +119,9 @@ namespace {
         else if(CF->getIntrinsicID() == Intrinsic::Toffoli) gateIndex = _Toffoli;
         else if(CF->getIntrinsicID() == Intrinsic::X) gateIndex = _X;
         else if(CF->getIntrinsicID() == Intrinsic::Z) gateIndex = _Z;
+        else if(CF->getIntrinsicID() == Intrinsic::CZ) gateIndex = _CZ;
+        else if(CF->getIntrinsicID() == Intrinsic::SqrtX) gateIndex = _SqrtX;
+        else if(CF->getIntrinsicID() == Intrinsic::SqrtY) gateIndex = _SqrtY;
         else { isIntrinsicQuantum = false; delAfterInst = false; }
         if (isIntrinsicQuantum) {
           vector <Value*> vectCallArgs;
