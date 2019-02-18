@@ -10,6 +10,8 @@ int main () {
 	S ( q[0] );
 	Tdag ( q[0] );
 	Sdag ( q[0] );
+	SqrtX ( q[0] );
+	SqrtY ( q[0] );
 	Rx ( q[0], 3.14159 );
 	Ry ( q[0], 3.14159 );
 	Rz ( q[0], 3.14159 );
@@ -19,6 +21,7 @@ int main () {
 	c[0] = MeasZ ( q[0] );
 	
 	CNOT ( q[0], q[1] );
+	CZ ( q[0], q[1] );
 	Toffoli ( q[0], q[1], q[2] );
 	Fredkin ( q[0], q[1], q[2] );
 
