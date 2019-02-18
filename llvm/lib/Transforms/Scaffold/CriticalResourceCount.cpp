@@ -150,7 +150,10 @@ struct qGate{
         gate_name[_Rx] = "Rx";
         gate_name[_Ry] = "Ry";
         gate_name[_Rz] = "Rz";
-        gate_name[_All] = "All";                    
+        gate_name[_All] = "All";
+	gate_name[_CZ] = "CZ";
+        gate_name[_SqrtX] = "SqrtX";
+        gate_name[_SqrtY] = "SqrtY";
         
         gate_index["CNOT"] = _CNOT;        
         gate_index["H"] = _H;
@@ -170,8 +173,10 @@ struct qGate{
         gate_index["Rx"] = _Rx;
         gate_index["Ry"] = _Ry;
         gate_index["Rz"] = _Rz;
-        gate_index["All"] = _All;                    
-        
+        gate_index["All"] = _All;
+	gate_index["CZ"] = _CZ;
+        gate_index["SqrtX"] = _SqrtX;
+        gate_index["SqrtY"] = _SqrtY;
         
         }
         
