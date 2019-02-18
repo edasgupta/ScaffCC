@@ -3,7 +3,7 @@ import re
 
 def process_qasm(fname):
 
-    qgates = ['H','X','CNOT','Y','Z','S','T','Tdag','Sdag','Rx','Ry','Rz','PrepX','PrepZ','MeasX','MeasZ','Toffoli','Fredkin']    
+    qgates = ['H','X','CNOT','Y','Z','S','T','Tdag','Sdag','Rx','Ry','Rz','PrepX','PrepZ','MeasX','MeasZ','Toffoli','Fredkin', 'CZ', 'SqrtX', 'SqrtY']    
 
     qgates_1 = ['H','X','Y','Z','S','T','Tdag']
     qgates_1a = ['Sdag']
