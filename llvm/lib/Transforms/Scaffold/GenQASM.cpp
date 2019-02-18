@@ -945,6 +945,9 @@ void GenQASM::genQASM(Function* F)
 	else if(fToPrint.find("X.") != string::npos) fToPrint = "X";
 	else if(fToPrint.find("Y.") != string::npos) fToPrint = "Y";
 	else if(fToPrint.find("Z.") != string::npos) fToPrint = "Z";
+	else if(fToPrint.find("CZ") != string::npos) fToPrint = "CZ";
+	else if(fToPrint.find("SqrtX") != string::npos) fToPrint = "SqrtX";
+	else if(fToPrint.find("SqrtY") != string::npos) fToPrint = "SqrtY";
 
 	std::replace(fToPrint.begin(), fToPrint.end(), '.', '_');
 	std::replace(fToPrint.begin(), fToPrint.end(), '-', '_');
@@ -1255,6 +1258,9 @@ bool GenQASM::runOnModule(Module &M) {
 		else if(newName.find("X.") != string::npos) newName = "X";
 		else if(newName.find("Y.") != string::npos) newName = "Y";
 		else if(newName.find("Z.") != string::npos) newName = "Z";
+	        else if(newName.find("CZ") != string::npos) newName = "CZ";
+		else if(newName.find("SqrtX") != string::npos) newName = "SqrtX";
+		else if(newName.find("SqrtY") != string::npos) newName = "SqrtY";
 
 		std::replace(newName.begin(), newName.end(), '.', '_');
 
