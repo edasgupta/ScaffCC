@@ -945,6 +945,9 @@ void Optimize::genGateArray(Function* F)
 	else if(fToPrint.find("Tdag") != string::npos) fToPrint = "Tdag";
 	else if(fToPrint.find("X.") != string::npos) fToPrint = "X";
 	else if(fToPrint.find("Z.") != string::npos) fToPrint = "Z";
+	else if(fToPrint.find("CZ") != string::npos) fToPrint = "CZ";
+	else if(fToPrint.find("SqrtX") != string::npos) fToPrint = "SqrtX";
+	else if(fToPrint.find("SqrtY") != string::npos) fToPrint = "SqrtY";
 
 	std::replace(fToPrint.begin(), fToPrint.end(), '.', '_');
 	std::replace(fToPrint.begin(), fToPrint.end(), '-', '_');
@@ -1217,7 +1220,11 @@ void Optimize::optimal_initial(Function * F, vector<string> &B, vector<OpGate> &
         else if(fName.substr(0,2) == "Rz"){ nxtGate.gateTy = 'r';}
         else if(fName.find("X.") !=string::npos){ nxtGate.gateTy = 'x';}
         else if(fName.find("Z.") !=string::npos){ nxtGate.gateTy = 'z';}
+	else if(fName.find("CZ") !=string::npos){ nxtGate.gateTy = 'cz';}
+        else if(fName.find("SqrtX") !=string::npos){ nxtGate.gateTy = 'sqrtx';}
+	else if(fName.find("SqrtY") !=string::npos){ nxtGate.gateTy = 'sqrty';}
        
+
         unsigned ToC = 0; //target or control
         for(vector<qGateArg>::iterator vpIt=mapFunction[mIndex].qArgs.begin(), vpItE=mapFunction[mIndex].qArgs.end();vpIt!=vpItE;++vpIt){
            string qName = printVarName((*vpIt).argPtr->getName()) ;
