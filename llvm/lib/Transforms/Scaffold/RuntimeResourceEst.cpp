@@ -37,6 +37,9 @@ using namespace std;
 #define _Rx 15
 #define _Ry 16
 #define _Rz 17
+#define _CZ 19
+#define _SqrtX 20
+#define _SqrtY 21
 
 bool debugRTResourceEst = false;
 
@@ -96,6 +99,9 @@ namespace {
 	  else if(CF->getIntrinsicID() == Intrinsic::X) gateIndex = _X;
 	  else if(CF->getIntrinsicID() == Intrinsic::Y) gateIndex = _Y;
 	  else if(CF->getIntrinsicID() == Intrinsic::Z) gateIndex = _Z;
+	  else if(CF->getIntrinsicID() == Intrinsic::CZ) gateIndex = _CZ;
+	  else if(CF->getIntrinsicID() == Intrinsic::SqrtX) gateIndex = _SqrtX;
+	  else if(CF->getIntrinsicID() == Intrinsic::SqrtY) gateIndex = _SqrtY;
 	  else { isIntrinsicQuantum = false; delAfterInst = false; }
       }
       else{
