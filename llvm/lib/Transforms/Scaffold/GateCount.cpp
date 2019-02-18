@@ -83,13 +83,13 @@ namespace {
     }
 
     virtual bool runOnModule (Module &M) {
-      // Function* ---> X | Z | H | T | CNOT | Toffoli | Rx | Ry | Rz | PrepZ | MeasZ
+      // Function* ---> X | Z | H | T | CNOT | Toffoli | Rx | Ry | Rz | PrepZ | MeasZ | CZ | SqrtX | SqrtY
       std::map <Function*, unsigned long long*> FunctionGates;
 
       // unsigned long long is 18x10^18 digits longs. good enough.
       // errs() << "LONG LONG LIMIT: " << std::numeric_limits<unsigned long long>::max() << "\n";
 
-      errs() << "\t\tX\t\tZ\t\tH\t\tT\t\tCNOT\t\tToffoli\t\tRx\t\tRy\t\tRz\t\tPrepZ\t\tMeasZ\n";
+      errs() << "\t\tX\t\tZ\t\tH\t\tT\t\tCNOT\t\tToffoli\t\tRx\t\tRy\t\tRz\t\tPrepZ\t\tMeasZ\t\tCZ\t\tSqrtX\t\tSqrtY\n";
 
       // iterate over all functions, and over all instructions in those functions
       // find call sites that have constant integer values. In Post-Order.
