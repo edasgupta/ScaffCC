@@ -5153,9 +5153,12 @@ SelectionDAGBuilder::visitIntrinsicCall(const CallInst &I, unsigned Intrinsic) {
     return 0;
 
   case Intrinsic::CNOT: //scaffold
+  case Intrinsic::CZ:
   case Intrinsic::X:
   case Intrinsic::Y:
   case Intrinsic::Z:
+  case Intrinsic::SqrtX:
+  case Intrinsic::SqrtY:
   case Intrinsic::H:
   case Intrinsic::T:
   case Intrinsic::Tdag:
