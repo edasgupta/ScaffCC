@@ -1019,6 +1019,9 @@ void DynGenQASMLoops::analyzeCallInst(Function* F, Instruction* pInst, AllocaIns
 	else if(CF->getIntrinsicID() == Intrinsic::X) gateIndex = _X;
 	else if(CF->getIntrinsicID() == Intrinsic::Y) gateIndex = _Y;
 	else if(CF->getIntrinsicID() == Intrinsic::Z) gateIndex = _Z;
+	else if(CF->getIntrinsicID() == Intrinsic::CZ) gateIndex = _CZ;
+	else if(CF->getIntrinsicID() == Intrinsic::SqrtX) gateIndex = _SqrtX;
+	else if(CF->getIntrinsicID() == Intrinsic::SqrtY) gateIndex = _SqrtY;
 	else { isIntrinsicQuantum = false; }
       }
       else{
@@ -1282,7 +1285,10 @@ void DynGenQASMLoops::removeIntrinsicQtmExec(Function* F,Instruction* I){
        || (CF->getIntrinsicID() == Intrinsic::Toffoli)
        || (CF->getIntrinsicID() == Intrinsic::X)
        || (CF->getIntrinsicID() == Intrinsic::Y)
-       || (CF->getIntrinsicID() == Intrinsic::Z)){
+       || (CF->getIntrinsicID() == Intrinsic::Z)
+       || (CF->getIntrinsicID() == Intrinsic::CZ)
+       || (CF->getIntrinsicID() == Intrinsic::SqrtX)
+       || (CF->getIntrinsicID() == Intrinsic::SqrtY)){
       vRemoveInst.push_back(CI);
     }
   }
