@@ -19,6 +19,8 @@ def process_qasm(fname):
         'H':'H',
         'X':'X',
         'Y':'Y',
+        'SqrtX':'SqrtX',
+        'SqrtY':'SqrtY',
         'Z':'Z',
         'S':'S',
         'T':'T',
@@ -32,6 +34,7 @@ def process_qasm(fname):
         'Ry':'Ry',
         'Rz':'Rz',
         'CNOT':'CNOT', #'CX',
+        'CZ':'CZ',
         'Toffoli':'Tof',
         'Fredkin':'Fredkin',
         'afree':'afree'
